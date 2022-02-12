@@ -6,7 +6,7 @@ const Doctor = require("./models/Doctor");
 const authRoute = require("./routes/auth");
 const patientRoute = require("./routes/patient");
 dotenv.config();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 const app = express();
 const bodyParser = require("body-parser");
 

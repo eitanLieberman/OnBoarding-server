@@ -60,11 +60,11 @@ router.get("/find/:id", verifyToken, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//GET ALL PATIENTS
 router.get("/", verifyToken, async (req, res) => {
   try {
     const patients = await Patient.findAll({
-      order: [["updatedAt", "DESC"]],
+      order: [["createdAt", "DESC"]],
     });
 
     if (patients === null) {

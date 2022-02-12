@@ -3,7 +3,7 @@ const CryptoJS = require("crypto-js");
 const Jwt = require("jsonwebtoken");
 const Doctor = require("../models/Doctor");
 //this serves as a db database held by the hospital, the doctor can only register with a special id generated for him this array represnts the external db, independent of out DB and probably in sync with the hospital's registered doctors
-const doctorDb = ["doc", "doc1", "doc2", "doc3"];
+const doctorDb = ["doc", "doc1", "doc2", "doc3", "doc4", "doc5"];
 router.post("/register", async (req, res) => {
   try {
     if (!doctorDb.includes(req.body.docId)) {
@@ -17,7 +17,7 @@ router.post("/register", async (req, res) => {
 
       password: CryptoJS.AES.encrypt(
         req.body.password,
-        process.env.PASS_SEC
+        process?.env?.PASS_SEC || "jhj54765jkkjH"
       ).toString(),
     });
     const savedUser = await newUser.save();
@@ -37,7 +37,7 @@ router.post("/login", async (req, res) => {
   }
   const hashedPassword = CryptoJS.AES.decrypt(
     user.dataValues.password,
-    process.env.PASS_SEC
+    process?.env?.PASS_SEC || "jhj54765jkkjH"
   );
   const passwordO = hashedPassword.toString(CryptoJS.enc.Utf8);
 
@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
   }
   const accessToken = Jwt.sign(
     { id: user.dataValues.id },
-    process.env.JWT_SEC,
+    process?.env?.JWT_SEC || "njkfsjfgnj4h33",
     { expiresIn: "3d" }
   );
   const { password, ...others } = user.dataValues;
