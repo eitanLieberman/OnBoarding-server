@@ -6,7 +6,7 @@ const Sequelize = require("sequelize");
 const sequelize = new Sequelize(
   `onboarding`,
   "guestuser",
-  `${process.env.MYSQL || "adfjidosjof32+_w1"}`,
+  `${process.env.MYSQL}`,
   {
     dialect: "mysql",
   }

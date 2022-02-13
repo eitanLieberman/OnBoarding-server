@@ -16,7 +16,9 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/patients", patientRoute);
-sequelize.sync().then((result) => {
+
+//comment in alter if you need extra patient details
+sequelize.sync(/*{ alter: true }*/).then((result) => {
   // console.log(result);
   app.listen(PORT, () => {
     console.log("backend server running! " + PORT);

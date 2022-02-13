@@ -17,6 +17,13 @@ const Patient = sequelize.define("patient", {
   },
   operation: Sequelize.STRING,
   nativeLanguage: Sequelize.STRING,
+
+  // HERE YOU MAY ENTER MORE INFO
+  // ex:
+  // extraDetail: {
+  //   type: Sequelize.STRING,
+  //   allowNull: true,
+  // },
 });
 
 module.exports = Patient;
