@@ -8,10 +8,16 @@ this is a CRUD api built with express,mySQL and sequelize.
 
 ## Installation
 
-run npm install
+1. run npm install
 
 ```bash
 npm install
+```
+
+2. run npm start on localhost
+
+```bash
+npm start
 ```
 
 The .env file contains a guest user for the sql DB, the user is available until 1/3/22 . contact me if you need access
