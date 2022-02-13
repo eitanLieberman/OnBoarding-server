@@ -2,7 +2,7 @@ const Patient = require("../models/Patient");
 const verifyToken = require("./verifyToken");
 
 const router = require("express").Router();
-
+const { Op } = require("sequelize");
 //Create
 router.post("/", verifyToken, async (req, res) => {
   const newPatient = new Patient(req.body);
@@ -49,7 +49,21 @@ router.delete("/:id", verifyToken, async (req, res) => {
 // //GET SINGLE Patient
 router.get("/find/:id", verifyToken, async (req, res) => {
   try {
-    const patient = await Patient.findOne({ where: { id: req.params.id } });
+    const patient = await Patient.findAll({
+      where: {
+        [Op.or]: [
+          {
+            id: { [Op.substring]: req.params.id },
+          },
+          {
+            fullName: { [Op.substring]: req.params.id },
+          },
+          {
+            operation: { [Op.substring]: req.params.id },
+          },
+        ],
+      },
+    });
     if (patient === null) {
       console.log("Not found!");
       return res.status(500).json("patient not found");
