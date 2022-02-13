@@ -8,6 +8,8 @@ const sequelize = new Sequelize(
   "guestuser",
   `${process.env.MYSQL}`,
   {
+    host: "Eitans-MacBook-Air.local",
+    port: "3306",
     dialect: "mysql",
   }
 );
