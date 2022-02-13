@@ -69,7 +69,7 @@ router.get("/find/:id", verifyToken, async (req, res) => {
       return res.status(500).json("patient not found");
     }
 
-    res.status(200).json(patient);
+    return res.status(200).json(patient);
   } catch (err) {
     res.status(500).json(err);
   }
