@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const Patient = require("./models/Patient");
 const Doctor = require("./models/Doctor");
+const Appointment = require("./models/Appointments");
 const authRoute = require("./routes/auth");
 const patientRoute = require("./routes/patient");
 dotenv.config();
